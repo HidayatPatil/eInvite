@@ -2,24 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 const TOTAL_FRAMES = 93;
-const SCROLL_DISTANCE = 900; // px of wheel/touch delta needed to play through all frames
 
 function framePath(i) {
-  return `/video_frames/web_video_${String(i).padStart(5, "0")}.png`;
+  return `/video_frames_webp/web_video_${String(i).padStart(5, "0")}.webp`;
 }
 
 export default function App() {
   const canvasRef = useRef(null);
+  const spacerRef = useRef(null);
   const inviteInfoRef = useRef(null);
   const framesRef = useRef([]);
-  const progressRef = useRef(0);
-  const lockedRef = useRef(true);
   const [loading, setLoading] = useState(true);
-  const [locked, setLocked] = useState(true);
 
   useEffect(() => {
-    lockedRef.current = locked;
-  }, [locked]);
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+    if (inviteInfoRef.current) inviteInfoRef.current.scrollTop = 0;
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -54,11 +55,7 @@ export default function App() {
     canvas.width = frames[0].naturalWidth;
     canvas.height = frames[0].naturalHeight;
 
-    function drawFrame(progress) {
-      const index = Math.min(
-        Math.floor(progress * TOTAL_FRAMES),
-        TOTAL_FRAMES - 1,
-      );
+    function drawFrame(index) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(frames[index], 0, 0);
     }
@@ -66,75 +63,42 @@ export default function App() {
     drawFrame(0);
 
     let rafId = null;
-    function scheduleDraw() {
+    function onScroll() {
       if (rafId) return;
       rafId = requestAnimationFrame(() => {
-        drawFrame(progressRef.current);
+        const spacerHeight = spacerRef.current.offsetHeight;
+        const maxScroll = spacerHeight - window.innerHeight;
+        const progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+        const index = Math.min(
+          Math.floor(progress * TOTAL_FRAMES),
+          TOTAL_FRAMES - 1,
+        );
+        drawFrame(index);
+
+        // Keep inviteInfo non-interactive to scroll until the canvas has
+        // fully scrolled out of view, so wheel input doesn't get captured
+        // by its internal scroll while only a sliver is visible.
+        inviteInfoRef.current.style.pointerEvents =
+          window.scrollY >= spacerHeight ? "auto" : "none";
+
         rafId = null;
       });
     }
 
-    function advance(delta) {
-      const next = Math.max(
-        0,
-        Math.min(1, progressRef.current + delta / SCROLL_DISTANCE),
-      );
-      progressRef.current = next;
-      scheduleDraw();
-      return next;
-    }
-
-    function handleWheel(e) {
-      if (lockedRef.current) {
-        e.preventDefault();
-        const next = advance(e.deltaY);
-        if (next >= 1 && e.deltaY > 0) setLocked(false);
-      } else if (inviteInfoRef.current.scrollTop <= 0 && e.deltaY < 0) {
-        e.preventDefault();
-        setLocked(true);
-        advance(e.deltaY);
-      }
-    }
-
-    let touchStartY = 0;
-    function handleTouchStart(e) {
-      touchStartY = e.touches[0].clientY;
-    }
-    function handleTouchMove(e) {
-      const currentY = e.touches[0].clientY;
-      const delta = touchStartY - currentY;
-      touchStartY = currentY;
-
-      if (lockedRef.current) {
-        e.preventDefault();
-        const next = advance(delta);
-        if (next >= 1 && delta > 0) setLocked(false);
-      } else if (inviteInfoRef.current.scrollTop <= 0 && delta < 0) {
-        e.preventDefault();
-        setLocked(true);
-        advance(delta);
-      }
-    }
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, {
-      passive: true,
-    });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("scroll", onScroll);
     };
   }, [loading]);
 
   return (
     <>
       {loading && <div className="loading">Loading...</div>}
-      <div className={`intro-container${locked ? "" : " hidden"}`}>
-        <canvas ref={canvasRef} />
+      <div className="scroll-spacer" ref={spacerRef}>
+        <div className="sticky-container">
+          <canvas ref={canvasRef} />
+        </div>
       </div>
       {/* <img className="leftWall" src="/images/leftWall.png" />
       <img className="rightWall" src="/images/rightWall.png" /> */}
