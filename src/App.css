@@ -6,13 +6,13 @@
 }
 
 .scroll-spacer {
-    height: 300vh;
+    height: 300dvh;
 }
 
 .sticky-container {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .sticky-container canvas {
-    height: 100vh;
+    height: 100dvh;
     width: auto;
 }
 
@@ -40,7 +40,7 @@
 
 .leftWall {
     position: fixed;
-    height: 100vh;
+    height: 100dvh;
     top: 0;
     left: 0;
     z-index: 5;
@@ -48,7 +48,7 @@
 
 .rightWall {
     position: fixed;
-    height: 100vh;
+    height: 100dvh;
     top: 0;
     right: 0;
     z-index: 5;
@@ -58,7 +58,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 
     img {
@@ -71,7 +71,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     display: flex;
     flex-direction: row;
@@ -101,7 +101,7 @@
 
 .cornerPat {
     position: fixed;
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     top: 0;
     left: 0;
@@ -120,7 +120,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
@@ -128,7 +128,7 @@
 }
 
 .infoSection {
-    height: 100vh;
+    height: 100dvh;
     flex-shrink: 0;
     display: flex;
     align-items: center;
