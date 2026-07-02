@@ -116,9 +116,16 @@ export default function App() {
       <div className="topDecor">
         <img src="/images/TopPat.png" />
       </div>
+      <div className="topTree">
+        <img src="/images/leftTree.png" />
+        <img src="/images/rightTree.png" />
+      </div>
       <div className="cornerPat">
         <img src="/images/cornerPat2.png" />
         <img src="/images/cornerPat1.png" />
+      </div>
+      <div className="bottomPat">
+        <img src="/images/bottomPat.png" />
       </div>
       <div className="inviteInfo" ref={inviteInfoRef}>
         <div className="intro infoSection">
@@ -129,26 +136,28 @@ export default function App() {
           </p>
           <div className="BandG">
             <h1>
-              Hidayat Mahamadsharif Patil
+              Hidayat
+              <br /> Mahamadsharif Patil
             </h1>
             <p>&</p>
             <h1>
-              Asma Abdul Ibrahim
+              Asma
+              <br />
+              Abdul Ibrahim
             </h1>
+          </div>
+          <div className="scrollUp">
+            <p>Nikah</p>
+            <span className="material-symbols-outlined">arrow_downward</span>
           </div>
         </div>
         <div className="nikah infoSection">
           <div>
             <p>Nikah Hosted By</p>
             <div className="hosts">
-              <h1>
-                Brides Fathers Name
-              </h1>
-              <p>(Bride's Father)</p>
-              <h1>
-                Brides Mothers Name
-              </h1>
-              <p>(Bride's Mother)</p>
+              <h1>Brides Fathers Name</h1>
+              <p>&</p>
+              <h1>Brides Mothers Name</h1>
             </div>
           </div>
           <div>
@@ -162,19 +171,23 @@ export default function App() {
           <div>
             <p>Address At</p>
             <div className="address">
-              <h1>Concordia space, Alley N, 120th street, Hydrabadh</h1>
-              <a>google map link</a>
+              <a>Concordia space, Alley N, 120th street, Hydrabadh</a>
             </div>
+          </div>
+          <div className="scrollUp">
+            <p>Walima</p>
+            <span className="material-symbols-outlined">arrow_downward</span>
           </div>
         </div>
         <div className="walima infoSection">
           <div>
             <p>Walima Hosted By</p>
             <div className="hosts">
-              <h1>Mahamadsharif Babaso Patil</h1>
-              <p>(Groom's Father)</p>
-              <h1>Shahnaz Mahamadsharif Patil</h1>
-              <p>(Groom's Mother)</p>
+              <h1>Mahamadsharif 
+                <br />Babaso Patil</h1>
+              <p>&</p>
+              <h1>Shahnaz 
+                <br />Mahamadsharif Patil</h1>
             </div>
           </div>
           <div>
@@ -188,9 +201,12 @@ export default function App() {
           <div>
             <p>Address At</p>
             <div className="address">
-              <h1>Concordia space, Alley N, 120th street, Kolhapur</h1>
-              <a>google map link</a>
+              <a>Concordia space, Alley N, 120th street, Kolhapur</a>
             </div>
+          </div>
+          <div className="scrollUp">
+            <p>Presents</p>
+            <span className="material-symbols-outlined">arrow_downward</span>
           </div>
         </div>
         <div className="outro infoSection">
