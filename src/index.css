@@ -1,4 +1,5 @@
 html, body {
+  position: static;
   overscroll-behavior: none;
 }
 

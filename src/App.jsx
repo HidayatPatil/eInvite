@@ -55,30 +55,32 @@ export default function App() {
     piano.volume = 1.0;
     birds.volume = 0.3;
 
-    function startAudioOnGesture() {
+    function startAudio() {
       if (audioStartedRef.current) return;
       audioStartedRef.current = true;
-      piano.play().catch(() => {});
-      birds.play().catch(() => {});
+      piano.play().then(() => {
+        birds.play().catch(() => {});
+      }).catch(() => {
+        audioStartedRef.current = false;
+      });
     }
 
-    // Try immediately — works for repeat visitors once browser builds engagement score
-    piano.play().then(() => {
-      audioStartedRef.current = true;
-      birds.play().catch(() => {});
-    }).catch(() => {
-      // Autoplay blocked — wait for first real user gesture
-      window.addEventListener("touchstart", startAudioOnGesture, { once: true, passive: true });
-      window.addEventListener("click", startAudioOnGesture, { once: true });
-      window.addEventListener("wheel", startAudioOnGesture, { once: true, passive: true });
-    });
+    // Start on the first real input gesture that produces a scroll
+    // (wheel/touchstart/keydown/pointerdown fire synchronously as part of
+    // the gesture, unlike the derived "scroll" event, so play() reliably
+    // lands inside the browser's user-activation window)
+    window.addEventListener("wheel", startAudio, { passive: true });
+    window.addEventListener("touchstart", startAudio, { passive: true });
+    window.addEventListener("keydown", startAudio);
+    window.addEventListener("pointerdown", startAudio);
 
     return () => {
       piano.pause();
       birds.pause();
-      window.removeEventListener("touchstart", startAudioOnGesture);
-      window.removeEventListener("click", startAudioOnGesture);
-      window.removeEventListener("wheel", startAudioOnGesture);
+      window.removeEventListener("wheel", startAudio);
+      window.removeEventListener("touchstart", startAudio);
+      window.removeEventListener("keydown", startAudio);
+      window.removeEventListener("pointerdown", startAudio);
     };
   }, []);
 
