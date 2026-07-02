@@ -6,13 +6,13 @@
 }
 
 .scroll-spacer {
-  height: 300svh;
+  height: calc(var(--vh, 1svh) * 300);
 }
 
 .sticky-container {
   position: sticky;
   top: 0;
-  height: 100dvh;
+  height: var(--vh, var(--vh, 100svh));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .sticky-container canvas {
-  height: 100dvh;
+  height: var(--vh, var(--vh, 100svh));
   width: auto;
 }
 
@@ -40,7 +40,7 @@
 
 .leftWall {
   position: fixed;
-  height: 100svh;
+  height: var(--vh, 100svh);
   top: 0;
   left: 0;
   z-index: 5;
@@ -48,7 +48,7 @@
 
 .rightWall {
   position: fixed;
-  height: 100svh;
+  height: var(--vh, 100svh);
   top: 0;
   right: 0;
   z-index: 5;
@@ -58,7 +58,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 100svh;
+  height: var(--vh, 100svh);
   overflow: hidden;
   z-index: -4;
 
@@ -73,7 +73,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 100svh;
+  height: var(--vh, 100svh);
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -120,7 +120,7 @@
 
 .cornerPat {
   position: fixed;
-  height: 100svh;
+  height: var(--vh, 100svh);
   width: 100vw;
   top: 0;
   left: 0;
@@ -155,7 +155,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100svh;
+  height: var(--vh, 100svh);
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -163,7 +163,7 @@
 }
 
 .infoSection {
-  height: 100svh;
+  height: var(--vh, 100svh);
   flex-shrink: 0;
   display: flex;
   align-items: center;
