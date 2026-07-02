@@ -79,7 +79,7 @@ export default function App() {
         // fully scrolled out of view, so wheel input doesn't get captured
         // by its internal scroll while only a sliver is visible.
         inviteInfoRef.current.style.pointerEvents =
-          window.scrollY >= spacerHeight ? "auto" : "none";
+          window.scrollY >= maxScroll ? "auto" : "none";
 
         rafId = null;
       });

@@ -12,7 +12,7 @@
 .sticky-container {
   position: sticky;
   top: 0;
-  height: 100svh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .sticky-container canvas {
-  height: 100svh;
+  height: 100dvh;
   width: auto;
 }
 
