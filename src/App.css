@@ -48,6 +48,33 @@
   }
 }
 
+.tapToEnter {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, .9);
+  cursor: pointer;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 2s ease;
+
+  p {
+    color: #fff;
+    font-family: "Cormorant SC", serif;
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 700;
+    /* letter-spacing: 1px; */
+    text-transform: uppercase;
+  }
+}
+
+.tapToEnter.fadeOut {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .loading {
   position: fixed;
   inset: 0;
@@ -119,6 +146,7 @@
   width: 100vw;
   overflow: hidden;
   z-index: 4;
+  pointer-events: none;
 
   img {
     height: 166px;
@@ -191,7 +219,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 190px 24px 160px 24px;
+  margin: 190px 24px 160px 24px;
   scroll-snap-align: start;
 }
 

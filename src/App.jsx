@@ -16,8 +16,11 @@ export default function App() {
   const audioStartedRef = useRef(false);
   const pianoRef = useRef(null);
   const birdsRef = useRef(null);
+  const startAudioRef = useRef(() => {});
   const [loading, setLoading] = useState(true);
   const [muted, setMuted] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -69,17 +72,19 @@ export default function App() {
         audioStartedRef.current = false;
       });
     }
+    startAudioRef.current = startAudio;
 
     // Start on the first real input gesture that produces a scroll
-    // (wheel/touchend/keydown/pointerdown fire synchronously as part of
-    // the gesture, unlike the derived "scroll" event, so play() reliably
+    // (wheel/touchend/keydown/click fire synchronously as part of the
+    // gesture, unlike the derived "scroll" event, so play() reliably
     // lands inside the browser's user-activation window. touchend rather
-    // than touchstart — iOS Safari only treats a completed tap as a
-    // confirmed gesture, not the start of what could become a scroll)
+    // than touchstart/pointerdown — iOS Safari only treats a completed
+    // tap as a confirmed gesture, not the start of what could become a
+    // scroll, so any "down" event fires too early)
     window.addEventListener("wheel", startAudio, { passive: true });
     window.addEventListener("touchend", startAudio, { passive: true });
     window.addEventListener("keydown", startAudio);
-    window.addEventListener("pointerdown", startAudio);
+    window.addEventListener("click", startAudio);
 
     return () => {
       piano.pause();
@@ -87,7 +92,7 @@ export default function App() {
       window.removeEventListener("wheel", startAudio);
       window.removeEventListener("touchend", startAudio);
       window.removeEventListener("keydown", startAudio);
-      window.removeEventListener("pointerdown", startAudio);
+      window.removeEventListener("click", startAudio);
     };
   }, []);
 
@@ -96,6 +101,11 @@ export default function App() {
     setMuted(next);
     if (pianoRef.current) pianoRef.current.muted = next;
     if (birdsRef.current) birdsRef.current.muted = next;
+  }
+
+  function handleUnlock() {
+    startAudioRef.current();
+    setClosing(true);
   }
 
   useEffect(() => {
@@ -150,6 +160,15 @@ export default function App() {
 
   return (
     <>
+      {!unlocked && (
+        <div
+          className={`tapToEnter${closing ? " fadeOut" : ""}`}
+          onClick={handleUnlock}
+          onTransitionEnd={() => setUnlocked(true)}
+        >
+          <p>Tap to Enter</p>
+        </div>
+      )}
       {loading && <div className="loading">Loading...</div>}
       <button
         className="audioToggle"
