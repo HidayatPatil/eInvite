@@ -12,6 +12,7 @@ export default function App() {
   const spacerRef = useRef(null);
   const inviteInfoRef = useRef(null);
   const framesRef = useRef([]);
+  const autoScrolledRef = useRef(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -75,11 +76,14 @@ export default function App() {
         );
         drawFrame(index);
 
-        // Keep inviteInfo non-interactive to scroll until the canvas has
-        // fully scrolled out of view, so wheel input doesn't get captured
-        // by its internal scroll while only a sliver is visible.
-        inviteInfoRef.current.style.pointerEvents =
-          window.scrollY >= maxScroll ? "auto" : "none";
+        if (progress >= 1 && !autoScrolledRef.current) {
+          autoScrolledRef.current = true;
+          inviteInfoRef.current.style.pointerEvents = "auto";
+          window.scrollTo({ top: spacerHeight, behavior: "smooth" });
+        } else if (progress < 1) {
+          autoScrolledRef.current = false;
+          inviteInfoRef.current.style.pointerEvents = "none";
+        }
 
         rafId = null;
       });
