@@ -236,9 +236,9 @@ export default function App() {
           <div>
             <p>Nikah Hosted By</p>
             <div className="hosts">
-              <h1>Brides Fathers Name</h1>
+              <h1>Mohammed Ibrahim</h1>
               <p>&</p>
-              <h1>Brides Mothers Name</h1>
+              <h1>Fatima Ibrahim</h1>
             </div>
           </div>
           <div>
@@ -252,7 +252,7 @@ export default function App() {
           <div>
             <p>Address At</p>
             <div className="address">
-              <a>Concordia space, Alley N, 120th street, Hydrabadh</a>
+              <a href="https://maps.app.goo.gl/hcAQVvHNcRdkHMzn9" target="blank">Rhodium-7 Convention, Rajendra Nagar, Hyderabad</a>
             </div>
           </div>
           <div className="scrollUp">
