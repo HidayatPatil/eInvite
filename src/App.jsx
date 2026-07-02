@@ -14,7 +14,10 @@ export default function App() {
   const framesRef = useRef([]);
   const autoScrolledRef = useRef(false);
   const audioStartedRef = useRef(false);
+  const pianoRef = useRef(null);
+  const birdsRef = useRef(null);
   const [loading, setLoading] = useState(true);
+  const [muted, setMuted] = useState(false);
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -54,6 +57,8 @@ export default function App() {
     birds.loop = true;
     piano.volume = 1.0;
     birds.volume = 0.3;
+    pianoRef.current = piano;
+    birdsRef.current = birds;
 
     function startAudio() {
       if (audioStartedRef.current) return;
@@ -66,11 +71,13 @@ export default function App() {
     }
 
     // Start on the first real input gesture that produces a scroll
-    // (wheel/touchstart/keydown/pointerdown fire synchronously as part of
+    // (wheel/touchend/keydown/pointerdown fire synchronously as part of
     // the gesture, unlike the derived "scroll" event, so play() reliably
-    // lands inside the browser's user-activation window)
+    // lands inside the browser's user-activation window. touchend rather
+    // than touchstart — iOS Safari only treats a completed tap as a
+    // confirmed gesture, not the start of what could become a scroll)
     window.addEventListener("wheel", startAudio, { passive: true });
-    window.addEventListener("touchstart", startAudio, { passive: true });
+    window.addEventListener("touchend", startAudio, { passive: true });
     window.addEventListener("keydown", startAudio);
     window.addEventListener("pointerdown", startAudio);
 
@@ -78,11 +85,18 @@ export default function App() {
       piano.pause();
       birds.pause();
       window.removeEventListener("wheel", startAudio);
-      window.removeEventListener("touchstart", startAudio);
+      window.removeEventListener("touchend", startAudio);
       window.removeEventListener("keydown", startAudio);
       window.removeEventListener("pointerdown", startAudio);
     };
   }, []);
+
+  function toggleMute() {
+    const next = !muted;
+    setMuted(next);
+    if (pianoRef.current) pianoRef.current.muted = next;
+    if (birdsRef.current) birdsRef.current.muted = next;
+  }
 
   useEffect(() => {
     if (loading) return;
@@ -137,6 +151,15 @@ export default function App() {
   return (
     <>
       {loading && <div className="loading">Loading...</div>}
+      <button
+        className="audioToggle"
+        onClick={toggleMute}
+        aria-label={muted ? "Unmute audio" : "Mute audio"}
+      >
+        <span className="material-symbols-outlined">
+          {muted ? "volume_off" : "volume_up"}
+        </span>
+      </button>
       <div className="scroll-spacer" ref={spacerRef}>
         <div className="sticky-container">
           <canvas ref={canvasRef} />
