@@ -13,6 +13,7 @@ export default function App() {
   const inviteInfoRef = useRef(null);
   const framesRef = useRef([]);
   const autoScrolledRef = useRef(false);
+  const audioStartedRef = useRef(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,6 +44,41 @@ export default function App() {
 
     return () => {
       cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    const piano = new Audio("/audio/piano.mp3");
+    const birds = new Audio("/audio/birds.mp3");
+    piano.loop = true;
+    birds.loop = true;
+    piano.volume = 1.0;
+    birds.volume = 0.3;
+
+    function startAudioOnGesture() {
+      if (audioStartedRef.current) return;
+      audioStartedRef.current = true;
+      piano.play().catch(() => {});
+      birds.play().catch(() => {});
+    }
+
+    // Try immediately — works for repeat visitors once browser builds engagement score
+    piano.play().then(() => {
+      audioStartedRef.current = true;
+      birds.play().catch(() => {});
+    }).catch(() => {
+      // Autoplay blocked — wait for first real user gesture
+      window.addEventListener("touchstart", startAudioOnGesture, { once: true, passive: true });
+      window.addEventListener("click", startAudioOnGesture, { once: true });
+      window.addEventListener("wheel", startAudioOnGesture, { once: true, passive: true });
+    });
+
+    return () => {
+      piano.pause();
+      birds.pause();
+      window.removeEventListener("touchstart", startAudioOnGesture);
+      window.removeEventListener("click", startAudioOnGesture);
+      window.removeEventListener("wheel", startAudioOnGesture);
     };
   }, []);
 
@@ -140,14 +176,11 @@ export default function App() {
           </p>
           <div className="BandG">
             <h1>
-              Hidayat
-              <br /> Mahamadsharif Patil
+              Hidayat Patil
             </h1>
             <p>&</p>
             <h1>
-              Asma
-              <br />
-              Abdul Ibrahim
+              Asma Ibrahim
             </h1>
           </div>
           <div className="scrollUp">
