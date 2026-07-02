@@ -20,7 +20,6 @@ export default function App() {
     }
     window.scrollTo(0, 0);
     if (inviteInfoRef.current) inviteInfoRef.current.scrollTop = 0;
-    document.documentElement.style.setProperty("--vh", `${window.innerHeight}px`);
   }, []);
 
   useEffect(() => {
