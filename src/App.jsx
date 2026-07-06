@@ -261,14 +261,13 @@ export default function App() {
           <div className="placeInfo">
             <p>Address At</p>
             <div className="address">
-              <a>Concordia space, Alley N, 120th street, Kolhapur</a>
+              <a href="https://maps.app.goo.gl/SxdPfUWvuDT3jJPR7" target="blank">Jai Palace, Lake Kalamba - Gargoti Rd, Kolahpur</a>
             </div>
           </div>
           <div className="placeInfo">
             <p>with best compliments from</p>
             <div className="compliments">
-              <h1>Tazin & Faisal Patil
-              </h1>
+              <h1>Tazin & Faisal Patil</h1>
             </div>
           </div>
           <div className="scrollUp">
