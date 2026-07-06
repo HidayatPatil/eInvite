@@ -66,11 +66,14 @@ export default function App() {
     function startAudio() {
       if (audioStartedRef.current) return;
       audioStartedRef.current = true;
-      piano.play().then(() => {
-        birds.play().catch(() => {});
-      }).catch(() => {
-        audioStartedRef.current = false;
-      });
+      piano
+        .play()
+        .then(() => {
+          birds.play().catch(() => {});
+        })
+        .catch(() => {
+          audioStartedRef.current = false;
+        });
     }
     startAudioRef.current = startAudio;
 
@@ -215,63 +218,38 @@ export default function App() {
         <div className="intro infoSection">
           <img className="dua" src="/images/prayer.png" />
           <p>
-            We humbly invite you to
-            <br /> the wedding of
+            in the name of Allah
+            <br /> the most beneficial and merciful
           </p>
           <div className="BandG">
-            <h1>
-              Hidayat Patil
-            </h1>
+            <h1>Mrs. Shahnaz</h1>
             <p>&</p>
-            <h1>
-              Asma Ibrahim
-            </h1>
+            <h1>Mr. Mahamadsharif Patil</h1>
           </div>
-          <div className="scrollUp">
-            <p>Nikah</p>
-            <span className="material-symbols-outlined">arrow_downward</span>
-          </div>
-        </div>
-        <div className="nikah infoSection">
-          <div>
-            <p>Nikah Hosted By</p>
-            <div className="hosts">
-              <h1>Mohammed Ibrahim</h1>
-              <p>&</p>
-              <h1>Fatima Ibrahim</h1>
-            </div>
-          </div>
-          <div>
-            <p>Please Join Us On</p>
-            <div className="place">
-              <h1>July 31st, 2026</h1>
-              <hr />
-              <h1>8:30 PM</h1>
-            </div>
-          </div>
-          <div>
-            <p>Address At</p>
-            <div className="address">
-              <a href="https://maps.app.goo.gl/hcAQVvHNcRdkHMzn9" target="blank">Rhodium-7 Convention, Rajendra Nagar, Hyderabad</a>
-            </div>
-          </div>
+          <p>
+            Invite you to celebrate the Walima ceremony of our youngest son
+          </p>
           <div className="scrollUp">
             <p>Walima</p>
             <span className="material-symbols-outlined">arrow_downward</span>
           </div>
         </div>
         <div className="walima infoSection">
+          <img src="/images/walimaFlo.png" />
           <div>
-            <p>Walima Hosted By</p>
+            <p>Dawat-E-Walima</p>
             <div className="hosts">
-              <h1>Mahamadsharif 
-                <br />Babaso Patil</h1>
+              <h1>
+                Hidayat Patil
+              </h1>
               <p>&</p>
-              <h1>Shahnaz 
-                <br />Mahamadsharif Patil</h1>
+              <h1>
+                Asma Ibrahim
+              </h1>
+              <p>D/o. Mrs. Fatima & Mr. Mohammed Ibrahim</p>
             </div>
           </div>
-          <div>
+          <div className="placeInfo">
             <p>Please Join Us On</p>
             <div className="place">
               <h1>August 2nd, 2026</h1>
@@ -279,20 +257,41 @@ export default function App() {
               <h1>12:00 PM</h1>
             </div>
           </div>
-          <div>
+          <div className="placeInfo">
             <p>Address At</p>
             <div className="address">
               <a>Concordia space, Alley N, 120th street, Kolhapur</a>
             </div>
           </div>
           <div className="scrollUp">
-            <p>Presents</p>
+            <p>Nikah</p>
             <span className="material-symbols-outlined">arrow_downward</span>
           </div>
         </div>
-        <div className="outro infoSection">
-          <p>Presents accepted only in blessings.</p>
-          <p>We only wish for your presence at the event.</p>
+        <div className="nikah infoSection">
+          <img src="/images/nikahFlo.png" />
+          <div className="placeInfo">
+            <p>Nikah Ceremony</p>
+            <div className="place">
+              <h1>July 31st, 2026</h1>
+              <hr />
+              <h1>8:30 PM</h1>
+            </div>
+          </div>
+          <div className="placeInfo">
+            <p>Address At</p>
+            <div className="address">
+              <a
+                href="https://maps.app.goo.gl/hcAQVvHNcRdkHMzn9"
+                target="blank"
+              >
+                Rhodium-7 Convention, Rajendra Nagar, Hyderabad
+              </a>
+            </div>
+          </div>
+          <p className="outro" >presents accepted in blessings.
+            <br /> we only wish for your presence at the event.
+          </p>
         </div>
       </div>
     </>
