@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-const TOTAL_FRAMES = 93;
+const TOTAL_FRAMES = 89;
 
 function framePath(i) {
   return `/video_frames_webp/web_video_${String(i).padStart(5, "0")}.webp`;
@@ -226,7 +226,7 @@ export default function App() {
             <p>&</p>
             <h1>Mr. Mahamadsharif Patil</h1>
           </div>
-          <p>invite you to celebrate the walima ceremony of our youngest son</p>
+          <p>we request the honor of your presence to celebrate the walima ceremony of our youngest son</p>
           <div className="scrollUp">
             <p>join us</p>
             <span className="material-symbols-outlined">arrow_downward</span>
@@ -267,8 +267,7 @@ export default function App() {
           <div className="placeInfo">
             <p>with best compliments from</p>
             <div className="compliments">
-              <h1>Tazin Patil, Faisal Patil
-                <br /> & Ali Patil👶
+              <h1>Tazin & Faisal Patil
               </h1>
             </div>
           </div>
