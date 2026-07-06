@@ -226,31 +226,32 @@ export default function App() {
             <p>&</p>
             <h1>Mr. Mahamadsharif Patil</h1>
           </div>
-          <p>
-            Invite you to celebrate the Walima ceremony of our youngest son
-          </p>
+          <p>invite you to celebrate the walima ceremony of our youngest son</p>
           <div className="scrollUp">
-            <p>Walima</p>
+            <p>join us</p>
             <span className="material-symbols-outlined">arrow_downward</span>
           </div>
         </div>
         <div className="walima infoSection">
           <img src="/images/walimaFlo.png" />
           <div>
-            <p>Dawat-E-Walima</p>
+            {/* <p>for</p> */}
             <div className="hosts">
-              <h1>
-                Hidayat Patil
-              </h1>
+              <h1>Hidayat Patil</h1>
               <p>&</p>
-              <h1>
-                Asma Ibrahim
-              </h1>
+              <h1>Asma Ibrahim</h1>
               <p>D/o. Mrs. Fatima & Mr. Mohammed Ibrahim</p>
             </div>
           </div>
+          <div className="scrollUp">
+            <p>walima</p>
+            <span className="material-symbols-outlined">arrow_downward</span>
+          </div>
+        </div>
+        <div className="nikah infoSection">
+          <img src="/images/detailFlo.png" />
           <div className="placeInfo">
-            <p>Please Join Us On</p>
+            <p>dawat-e-walima</p>
             <div className="place">
               <h1>August 2nd, 2026</h1>
               <hr />
@@ -261,6 +262,14 @@ export default function App() {
             <p>Address At</p>
             <div className="address">
               <a>Concordia space, Alley N, 120th street, Kolhapur</a>
+            </div>
+          </div>
+          <div className="placeInfo">
+            <p>with best compliments from</p>
+            <div className="compliments">
+              <h1>Tazin Patil, Faisal Patil
+                <br /> & Ali Patil👶
+              </h1>
             </div>
           </div>
           <div className="scrollUp">
@@ -289,7 +298,8 @@ export default function App() {
               </a>
             </div>
           </div>
-          <p className="outro" >presents accepted in blessings.
+          <p className="outro">
+            presents accepted in blessings.
             <br /> we only wish for your presence at the event.
           </p>
         </div>
