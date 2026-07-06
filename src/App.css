@@ -338,7 +338,7 @@
   h1 {
     color: #000;
     text-align: center;
-    font-size: clamp(32px, 6vw, 32px);
+    font-size: clamp(40px, 6vw, 32px);
     font-style: normal;
     font-weight: 700;
     margin-bottom: 12px;
@@ -424,9 +424,6 @@
   }
 }
 
-.ali {
-  /* font-size: 20px; */
-}
 
 .scrollUp {
   display: flex;
