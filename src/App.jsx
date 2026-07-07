@@ -226,7 +226,7 @@ export default function App() {
             <p>&</p>
             <h1>Mr. Mahamadsharif Patil</h1>
           </div>
-          <p>we request the honor of your presence to celebrate the walima ceremony of our youngest son</p>
+          <p>request the honor of your presence to celebrate the walima ceremony of our youngest son</p>
           <div className="scrollUp">
             <p>join us</p>
             <span className="material-symbols-outlined">arrow_downward</span>
@@ -267,7 +267,7 @@ export default function App() {
           <div className="placeInfo">
             <p>with best compliments from</p>
             <div className="compliments">
-              <h1>Tazin & Faisal Patil</h1>
+              <h1>Mrs. Tazin & Mr. Faisal Patil</h1>
             </div>
           </div>
           <div className="scrollUp">
@@ -297,8 +297,8 @@ export default function App() {
             </div>
           </div>
           <p className="outro">
-            presents accepted in blessings.
-            <br /> we only wish for your presence at the event.
+            presents accepted in blessings only.
+            <br /> your presence is what matters most to us.
           </p>
         </div>
       </div>
