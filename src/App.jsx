@@ -222,11 +222,14 @@ export default function App() {
             <br /> the most beneficial and merciful
           </p>
           <div className="BandG">
-            <h1>Mrs. Shahnaz</h1>
+            <h1>Mrs. Fatima</h1>
             <p>&</p>
-            <h1>Mr. Mahamadsharif Patil</h1>
+            <h1>Mr. Mohammed Ibrahim</h1>
           </div>
-          <p>request the honor of your presence to celebrate the walima ceremony of our youngest son</p>
+          <p>
+            request the honor of your presence to celebrate the nikah ceremony
+            of our eldest daughter
+          </p>
           <div className="scrollUp">
             <p>join us</p>
             <span className="material-symbols-outlined">arrow_downward</span>
@@ -237,46 +240,19 @@ export default function App() {
           <div>
             {/* <p>for</p> */}
             <div className="hosts">
-              <h1>Hidayat Patil</h1>
-              <p>&</p>
               <h1>Asma Ibrahim</h1>
-              <p>D/o. Mrs. Fatima & Mr. Mohammed Ibrahim</p>
+              <p>&</p>
+              <h1>Hidayat Patil</h1>
+              <p>S/o. Mrs. Shahnaz & Mr. Mahamadsharif Patil</p>
             </div>
           </div>
           <div className="scrollUp">
-            <p>walima</p>
+            <p>nikah</p>
             <span className="material-symbols-outlined">arrow_downward</span>
           </div>
         </div>
         <div className="nikah infoSection">
           <img src="/images/detailFlo.png" />
-          <div className="placeInfo">
-            <p>dawat-e-walima</p>
-            <div className="place">
-              <h1>August 2nd, 2026</h1>
-              <hr />
-              <h1>12:00 PM</h1>
-            </div>
-          </div>
-          <div className="placeInfo">
-            <p>Address At</p>
-            <div className="address">
-              <a href="https://maps.app.goo.gl/SxdPfUWvuDT3jJPR7" target="blank">Jai Palace, Lake Kalamba - Gargoti Rd, Kolahpur</a>
-            </div>
-          </div>
-          <div className="placeInfo">
-            <p>with best compliments from</p>
-            <div className="compliments">
-              <h1>Tazin & Faisal Patil</h1>
-            </div>
-          </div>
-          <div className="scrollUp">
-            <p>Nikah</p>
-            <span className="material-symbols-outlined">arrow_downward</span>
-          </div>
-        </div>
-        <div className="nikah infoSection">
-          <img src="/images/nikahFlo.png" />
           <div className="placeInfo">
             <p>Nikah Ceremony</p>
             <div className="place">
@@ -293,6 +269,38 @@ export default function App() {
                 target="blank"
               >
                 Rhodium-7 Convention, Rajendra Nagar, Hyderabad
+              </a>
+            </div>
+          </div>
+          <div className="placeInfo">
+            <p>with best compliments from</p>
+            <div className="compliments">
+              <h1>Ayesha Ibrahim & Abdullah Ibrahim</h1>
+            </div>
+          </div>
+          <div className="scrollUp">
+            <p>walima</p>
+            <span className="material-symbols-outlined">arrow_downward</span>
+          </div>
+        </div>
+        <div className="nikah infoSection">
+          <img src="/images/nikahFlo.png" />
+          <div className="placeInfo">
+            <p>dawat-e-walima</p>
+            <div className="place">
+              <h1>August 2nd, 2026</h1>
+              <hr />
+              <h1>12:00 PM</h1>
+            </div>
+          </div>
+          <div className="placeInfo">
+            <p>Address At</p>
+            <div className="address">
+              <a
+                href="https://maps.app.goo.gl/SxdPfUWvuDT3jJPR7"
+                target="blank"
+              >
+                Jai Palace, Lake Kalamba - Gargoti Rd, Kolahpur
               </a>
             </div>
           </div>
