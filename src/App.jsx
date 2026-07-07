@@ -267,7 +267,7 @@ export default function App() {
           <div className="placeInfo">
             <p>with best compliments from</p>
             <div className="compliments">
-              <h1>Mrs. Tazin & Mr. Faisal Patil</h1>
+              <h1>Tazin & Faisal Patil</h1>
             </div>
           </div>
           <div className="scrollUp">
